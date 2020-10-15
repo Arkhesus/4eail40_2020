@@ -1,19 +1,44 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-// Implement types Rectangle, Circle and Shape
+//création du type rectangle
+type Rectangle struct {
+	Length string
+	Width  string
+}
 
+//création du type cercle
+type Circle struct {
+	Radius string
+}
+
+//interface pouvant être implémentée, donnant des noms de méthodes et pouvant être modifié selon la situation
+type Shape interface {
+}
+
+// fonction permettant de printer le infos du rectangle
+func (rect Rectangle) String() string {
+	return fmt.Sprintf("Square of width %s and length %s", rect.Width, rect.Length)
+}
+
+// fonction permettant de printer le infos du cercle
+func (circ Circle) String() string {
+	return fmt.Sprintf("circle of radius %s", circ.Radius)
+}
+
+//fonction principale qui tourne
 func main() {
-	r := &Rectangle{2, 3}
-	c := &Circle{5}
 
-	shapes := []Shape{r, c}
+	r := &Rectangle{"4", "6"} // permet de créer une instance de rectangle
+	c := &Circle{"11"}
 
-	for _, s := range shapes {
+	s := []Shape{r, c}
+
+	for _, s := range s {
 		fmt.Println(s)
-		// Expected output:
-		// Square of width 2 and length 3
-		// Circle of radius 5
 	}
+
 }
