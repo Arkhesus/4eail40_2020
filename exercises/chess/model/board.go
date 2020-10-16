@@ -2,3 +2,4 @@
 package model
 
 // Implement type Board
+type Board [8][8]Piece
