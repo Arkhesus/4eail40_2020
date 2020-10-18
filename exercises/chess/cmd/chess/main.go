@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	model "../../model"
 )
 
 func main() {
@@ -30,6 +32,7 @@ func runCommand(commandStr string) (e error) {
 		os.Exit(0)
 	// add another case here for custom commands.
 	case "new":
+		fmt.Println(InitializeGame())
 		// TODO Create a new game on a classic 8x8 board.
 		// TODO Display the board on console.
 		break
@@ -43,4 +46,18 @@ func runCommand(commandStr string) (e error) {
 		e = fmt.Errorf("unknown command %s", args[0])
 	}
 	return
+}
+
+func InitializeGame() model.State {
+	var board = model.Board8x8{}
+	board.Initialize()
+	var state model.State = model.State8x8{
+		CurrentBoard:  board,
+		PreviousState: nil,
+		Player:        "root",
+		LastMove:      nil,
+		ActionNumber:  -2,
+	}
+
+	return state
 }
