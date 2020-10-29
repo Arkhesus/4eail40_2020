@@ -48,11 +48,11 @@ func runCommand(commandStr string) (e error) {
 	return
 }
 
-func InitializeGame() model.State {
+func InitializeGame() model.IState {
 	var board = model.Board8x8{}
 	board.Initialize()
-	var state model.State = model.State8x8{
-		CurrentBoard:  board,
+	var state model.IState = &model.State8x8{
+		CurrentBoard:  &board,
 		PreviousState: nil,
 		Player:        "root",
 		LastMove:      nil,

@@ -1,19 +1,20 @@
-package model
+package state
 
 import (
 	"fmt"
+	"../../model/board"
 )
 
 //TODO Implement game state related elements here
 
-type State interface {
+type IState interface {
 	fmt.Stringer
 	ShowState() string
 }
 
 type State8x8 struct {
-	CurrentBoard  Board8x8
-	PreviousState *State8x8
+	CurrentBoard  IBoard
+	PreviousState *IState
 	Player        string
 	LastMove      []string
 	ActionNumber  int
